@@ -1,2 +1,2 @@
 # abs-pdf-switcher
-Firefox extension to switch between abstracts and pdfs
+A firefox extension to switch between abstracts and pdfs
