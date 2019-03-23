@@ -1,5 +1,5 @@
 # abs-pdf-switcher
-A firefox extension to switch between abstracts and pdfs
+A chrome extension to switch between abstracts and pdfs
 
 Curently supported sites:
 * https://arxiv.org/
