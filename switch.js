@@ -14,8 +14,8 @@ const pattern_pmlr_abs = "proceedings\\.mlr\\.press/v.*/.*\\.html";
 const pattern_pmlr_pdf = "proceedings\\.mlr\\.press/v.*/.*\\.pdf";
 
 function initializePageAction(tab) {
-  tabid = tab.id;
-  taburl = tab.url;
+  var tabid = tab.id;
+  var taburl = tab.url;
   var newurl;
   if (taburl.indexOf(str_arxiv_abs) != -1) {
     // Arxiv Abstract
@@ -62,19 +62,19 @@ function initializePageAction(tab) {
     var lastSlash = taburl.lastIndexOf("/");
     newurl = taburl.slice(0, lastSlash) + ".html"; // add .html
   } else {
-    browser.pageAction.hide(tabid);
+    chrome.pageAction.hide(tabid);
     return;
   }
-  browser.pageAction.show(tabid);
-  browser.pageAction.onClicked.addListener(() => {
-    browser.tabs.update({url: newurl});
+  chrome.pageAction.show(tabid);
+  chrome.pageAction.onClicked.addListener(() => {
+    chrome.tabs.update({url: newurl});
   });
 }
 
 // Each time a tab is updated, reset the page action for that tab.
-browser.tabs.onUpdated.addListener((id, changeInfo, tab) => {
+chrome.tabs.onUpdated.addListener((id, changeInfo, tab) => {
   // without changeInfo.attention, the user has to wait until the pdf is fully loaded
-  if (!changeInfo.attention || changeInfo.status == "complete") {
+  if (!changeInfo.url) {
     initializePageAction(tab);
   }
 });

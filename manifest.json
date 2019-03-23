@@ -4,7 +4,7 @@
         "version": "1.0",
         "description": "Switch between abstracts and pdfs",
         "permissions": [
-                "activeTab"
+                "tabs"
         ],
         "icons": {
                 "48": "icons/outline-compare_arrows-24px.svg"
